@@ -1,10 +1,13 @@
 import { LitElement, html, unsafeCSS } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import eleStyle from "./f-icon.scss";
 
 @customElement("f-icon")
 export class FIcon extends LitElement {
   static styles = [unsafeCSS(eleStyle)];
+
+  @property()
+  state: "primary" | "success" | "warning" = "primary";
 
   render() {
     return html`
@@ -27,7 +30,6 @@ export class FIcon extends LitElement {
     `;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "f-icon": FIcon;

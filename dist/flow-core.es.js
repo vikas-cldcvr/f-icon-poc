@@ -3,10 +3,10 @@
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const t$1 = window.ShadowRoot && (window.ShadyCSS === void 0 || window.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, e$2 = Symbol(), n$5 = /* @__PURE__ */ new WeakMap();
+const t$1 = window.ShadowRoot && (window.ShadyCSS === void 0 || window.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, e$3 = Symbol(), n$5 = /* @__PURE__ */ new WeakMap();
 class s$3 {
   constructor(t2, n2, s2) {
-    if (this._$cssResult$ = true, s2 !== e$2)
+    if (this._$cssResult$ = true, s2 !== e$3)
       throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
     this.cssText = t2, this.t = n2;
   }
@@ -23,7 +23,7 @@ class s$3 {
     return this.cssText;
   }
 }
-const o$3 = (t2) => new s$3(typeof t2 == "string" ? t2 : t2 + "", void 0, e$2), i$1 = (e2, n2) => {
+const o$3 = (t2) => new s$3(typeof t2 == "string" ? t2 : t2 + "", void 0, e$3), i$2 = (e2, n2) => {
   t$1 ? e2.adoptedStyleSheets = n2.map((t2) => t2 instanceof CSSStyleSheet ? t2 : t2.styleSheet) : n2.forEach((t2) => {
     const n3 = document.createElement("style"), s2 = window.litNonce;
     s2 !== void 0 && n3.setAttribute("nonce", s2), n3.textContent = t2.cssText, e2.appendChild(n3);
@@ -40,7 +40,7 @@ const o$3 = (t2) => new s$3(typeof t2 == "string" ? t2 : t2 + "", void 0, e$2), 
  * SPDX-License-Identifier: BSD-3-Clause
  */
 var s$2;
-const e$1 = window.trustedTypes, r$1 = e$1 ? e$1.emptyScript : "", h$1 = window.reactiveElementPolyfillSupport, o$2 = { toAttribute(t2, i2) {
+const e$2 = window.trustedTypes, r$1 = e$2 ? e$2.emptyScript : "", h$1 = window.reactiveElementPolyfillSupport, o$2 = { toAttribute(t2, i2) {
   switch (i2) {
     case Boolean:
       t2 = t2 ? r$1 : null;
@@ -148,7 +148,7 @@ class a$1 extends HTMLElement {
   createRenderRoot() {
     var t2;
     const s2 = (t2 = this.shadowRoot) !== null && t2 !== void 0 ? t2 : this.attachShadow(this.constructor.shadowRootOptions);
-    return i$1(s2, this.constructor.elementStyles), s2;
+    return i$2(s2, this.constructor.elementStyles), s2;
   }
   connectedCallback() {
     var t2;
@@ -255,7 +255,7 @@ a$1.finalized = true, a$1.elementProperties = /* @__PURE__ */ new Map(), a$1.ele
  * SPDX-License-Identifier: BSD-3-Clause
  */
 var t;
-const i = globalThis.trustedTypes, s$1 = i ? i.createPolicy("lit-html", { createHTML: (t2) => t2 }) : void 0, e = `lit$${(Math.random() + "").slice(9)}$`, o$1 = "?" + e, n$3 = `<${o$1}>`, l$1 = document, h = (t2 = "") => l$1.createComment(t2), r = (t2) => t2 === null || typeof t2 != "object" && typeof t2 != "function", d = Array.isArray, u = (t2) => {
+const i$1 = globalThis.trustedTypes, s$1 = i$1 ? i$1.createPolicy("lit-html", { createHTML: (t2) => t2 }) : void 0, e$1 = `lit$${(Math.random() + "").slice(9)}$`, o$1 = "?" + e$1, n$3 = `<${o$1}>`, l$1 = document, h = (t2 = "") => l$1.createComment(t2), r = (t2) => t2 === null || typeof t2 != "object" && typeof t2 != "function", d = Array.isArray, u = (t2) => {
   var i2;
   return d(t2) || typeof ((i2 = t2) === null || i2 === void 0 ? void 0 : i2[Symbol.iterator]) == "function";
 }, c = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, v = /-->/g, a = />/g, f = />|[ 	\n\r](?:([^\s"'>=/]+)([ 	\n\r]*=[ 	\n\r]*(?:[^ 	\n\r"'`<>=]|("|')|))|$)/g, _ = /'/g, m = /"/g, g = /^(?:script|style|textarea|title)$/i, p = (t2) => (i2, ...s2) => ({ _$litType$: t2, strings: i2, values: s2 }), $ = p(1), b = Symbol.for("lit-noChange"), w = Symbol.for("lit-nothing"), T = /* @__PURE__ */ new WeakMap(), x = (t2, i2, s2) => {
@@ -276,7 +276,7 @@ const i = globalThis.trustedTypes, s$1 = i ? i.createPolicy("lit-html", { create
     for (; $2 < s2.length && (d2.lastIndex = $2, u3 = d2.exec(s2), u3 !== null); )
       $2 = d2.lastIndex, d2 === c ? u3[1] === "!--" ? d2 = v : u3[1] !== void 0 ? d2 = a : u3[2] !== void 0 ? (g.test(u3[2]) && (h2 = RegExp("</" + u3[2], "g")), d2 = f) : u3[3] !== void 0 && (d2 = f) : d2 === f ? u3[0] === ">" ? (d2 = h2 != null ? h2 : c, p2 = -1) : u3[1] === void 0 ? p2 = -2 : (p2 = d2.lastIndex - u3[2].length, o3 = u3[1], d2 = u3[3] === void 0 ? f : u3[3] === '"' ? m : _) : d2 === m || d2 === _ ? d2 = f : d2 === v || d2 === a ? d2 = c : (d2 = f, h2 = void 0);
     const y = d2 === f && t2[i3 + 1].startsWith("/>") ? " " : "";
-    r2 += d2 === c ? s2 + n$3 : p2 >= 0 ? (l2.push(o3), s2.slice(0, p2) + "$lit$" + s2.slice(p2) + e + y) : s2 + e + (p2 === -2 ? (l2.push(void 0), i3) : y);
+    r2 += d2 === c ? s2 + n$3 : p2 >= 0 ? (l2.push(o3), s2.slice(0, p2) + "$lit$" + s2.slice(p2) + e$1 + y) : s2 + e$1 + (p2 === -2 ? (l2.push(void 0), i3) : y);
   }
   const u2 = r2 + (t2[o2] || "<?>") + (i2 === 2 ? "</svg>" : "");
   if (!Array.isArray(t2) || !t2.hasOwnProperty("raw"))
@@ -298,10 +298,10 @@ class E {
         if (l2.hasAttributes()) {
           const t3 = [];
           for (const i2 of l2.getAttributeNames())
-            if (i2.endsWith("$lit$") || i2.startsWith(e)) {
+            if (i2.endsWith("$lit$") || i2.startsWith(e$1)) {
               const s3 = a2[d2++];
               if (t3.push(i2), s3 !== void 0) {
-                const t4 = l2.getAttribute(s3.toLowerCase() + "$lit$").split(e), i3 = /([.?@])?(.*)/.exec(s3);
+                const t4 = l2.getAttribute(s3.toLowerCase() + "$lit$").split(e$1), i3 = /([.?@])?(.*)/.exec(s3);
                 c2.push({ type: 1, index: r2, name: i3[2], strings: t4, ctor: i3[1] === "." ? M : i3[1] === "?" ? H : i3[1] === "@" ? I : S });
               } else
                 c2.push({ type: 6, index: r2 });
@@ -310,9 +310,9 @@ class E {
             l2.removeAttribute(i2);
         }
         if (g.test(l2.tagName)) {
-          const t3 = l2.textContent.split(e), s3 = t3.length - 1;
+          const t3 = l2.textContent.split(e$1), s3 = t3.length - 1;
           if (s3 > 0) {
-            l2.textContent = i ? i.emptyScript : "";
+            l2.textContent = i$1 ? i$1.emptyScript : "";
             for (let i2 = 0; i2 < s3; i2++)
               l2.append(t3[i2], h()), A.nextNode(), c2.push({ type: 2, index: ++r2 });
             l2.append(t3[s3], h());
@@ -323,8 +323,8 @@ class E {
           c2.push({ type: 2, index: r2 });
         else {
           let t3 = -1;
-          for (; (t3 = l2.data.indexOf(e, t3 + 1)) !== -1; )
-            c2.push({ type: 7, index: r2 }), t3 += e.length - 1;
+          for (; (t3 = l2.data.indexOf(e$1, t3 + 1)) !== -1; )
+            c2.push({ type: 7, index: r2 }), t3 += e$1.length - 1;
         }
       r2++;
     }
@@ -473,7 +473,7 @@ class M extends S {
     this.element[this.name] = t2 === w ? void 0 : t2;
   }
 }
-const k = i ? i.emptyScript : "";
+const k = i$1 ? i$1.emptyScript : "";
 class H extends S {
   constructor() {
     super(...arguments), this.type = 4;
@@ -559,12 +559,29 @@ const n$1 = (n2) => (e2) => typeof e2 == "function" ? ((n3, e3) => (window.custo
 })(n2, e2);
 /**
  * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+const i = (i2, e2) => e2.kind === "method" && e2.descriptor && !("value" in e2.descriptor) ? { ...e2, finisher(n2) {
+  n2.createProperty(e2.key, i2);
+} } : { kind: "field", key: Symbol(), placement: "own", descriptor: {}, originalKey: e2.key, initializer() {
+  typeof e2.initializer == "function" && (this[e2.key] = e2.initializer.call(this));
+}, finisher(n2) {
+  n2.createProperty(e2.key, i2);
+} };
+function e(e2) {
+  return (n2, t2) => t2 !== void 0 ? ((i2, e3, n3) => {
+    e3.constructor.createProperty(n3, i2);
+  })(e2, n2, t2) : i(e2, n2);
+}
+/**
+ * @license
  * Copyright 2021 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
 var n;
 ((n = window.HTMLSlotElement) === null || n === void 0 ? void 0 : n.prototype.assignedElements) != null ? (o2, n2) => o2.assignedElements(n2) : (o2, n2) => o2.assignedNodes(n2).filter((o3) => o3.nodeType === Node.ELEMENT_NODE);
-var eleStyle = /* @__PURE__ */ (() => ":host svg,:host svg *{height:24px;width:24px;fill:#028bfc}\n")();
+var eleStyle = /* @__PURE__ */ (() => ":host[state=primary] svg,:host[state=primary] svg *{fill:#00f}:host[state=success] svg,:host[state=success] svg *{fill:green}:host[state=warning] svg,:host[state=warning] svg *{fill:orange}:host svg,:host svg *{height:24px;width:24px;fill:#028bfc}\n")();
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -577,6 +594,10 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let FIcon = class extends s {
+  constructor() {
+    super(...arguments);
+    this.state = "primary";
+  }
   render() {
     return $`
       <svg
@@ -599,7 +620,11 @@ let FIcon = class extends s {
   }
 };
 FIcon.styles = [o$3(eleStyle)];
+__decorateClass([
+  e()
+], FIcon.prototype, "state", 2);
 FIcon = __decorateClass([
   n$1("f-icon")
 ], FIcon);
+console.log(FIcon);
 export { FIcon };

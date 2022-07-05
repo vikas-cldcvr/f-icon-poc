@@ -1,6 +1,24 @@
 @import "./../../node_modules/f-core-poc/tokens";
 
 :host {
+  &[state="primary"] {
+    svg,
+    svg * {
+      fill: blue;
+    }
+  }
+  &[state="success"] {
+    svg,
+    svg * {
+      fill: green;
+    }
+  }
+  &[state="warning"] {
+    svg,
+    svg * {
+      fill: orange;
+    }
+  }
   svg,
   svg * {
     height: $icon-size;

@@ -1,3 +1,4 @@
 *
 !dist/**/*.*
 !shims.d.ts
+!custom-elements.json

@@ -1,1 +1,1 @@
-:host svg,:host svg *{height:24px;width:24px;fill:#028bfc}
+:host[state=primary] svg,:host[state=primary] svg *{fill:#00f}:host[state=success] svg,:host[state=success] svg *{fill:green}:host[state=warning] svg,:host[state=warning] svg *{fill:orange}:host svg,:host svg *{height:24px;width:24px;fill:#028bfc}
