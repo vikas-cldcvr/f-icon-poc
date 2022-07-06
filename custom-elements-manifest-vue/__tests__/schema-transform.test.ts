@@ -12,7 +12,9 @@ describe("custom-elements-manifest-vue", () => {
 			export interface GlobalComponents {
 				\\"f-icon\\": VueConstructor<
 					{
-						state: \\"primary\\" | \\"success\\" | \\"warning\\";
+						$props: {
+							state: \\"primary\\" | \\"success\\" | \\"warning\\";
+						};
 					} & Vue
 				>;
 			}

@@ -1,6 +1,6 @@
 import { Declaration, Package } from "custom-elements-manifest/schema";
 import { vaidateOptions } from "./options";
-import prettier from 'prettier';
+import prettier from "prettier";
 
 const options = vaidateOptions({});
 
@@ -17,8 +17,8 @@ export function transformSchema(schema: Package) {
 		});
 	});
 
-    const output = prettier.format(
-        `
+	const output = prettier.format(
+		`
         /* eslint-disable */
         import { VueConstructor } from "vue";
 
@@ -28,12 +28,12 @@ export function transformSchema(schema: Package) {
             }
         }
     `,
-        { ...options.prettierConfig, parser: 'typescript' }
-    );
+		{ ...options.prettierConfig, parser: "typescript" }
+	);
 
-    console.log(output);
+	//console.log(output);
 
-    return output;
+	return output;
 }
 
 function getComponentCodeFromDeclaration(declaration: Declaration) {
@@ -44,20 +44,22 @@ function getComponentCodeFromDeclaration(declaration: Declaration) {
 	let componentDeclaration = `
         "${declaration.tagName}": VueConstructor<
             {
+				$props: {
     `;
 
-    if (declaration.attributes) {
-        declaration.attributes.forEach(attribute => {
-            componentDeclaration = `
+	if (declaration.attributes) {
+		declaration.attributes.forEach((attribute) => {
+			componentDeclaration = `
                 ${componentDeclaration}
                 ${attribute.name}: ${attribute.type?.text};
             `;
-        });
-    }
+		});
+	}
 
 	componentDeclaration = `${componentDeclaration}
+	};
         } & Vue
     >;`;
 
-    return componentDeclaration;
+	return componentDeclaration;
 }
