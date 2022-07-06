@@ -27,6 +27,6 @@
       "~": ["src/index.ts"]
     }
   },
-  "include": ["src/**/*.ts", "./generateIntellisense.ts"],
+  "include": ["src/**/*.ts", "./generate-types.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

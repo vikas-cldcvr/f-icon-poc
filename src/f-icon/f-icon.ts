@@ -7,7 +7,7 @@ export class FIcon extends LitElement {
   static styles = [unsafeCSS(eleStyle)];
 
   @property()
-  state: "primary" | "success" | "warning" = "primary";
+  state: "primary" | "success" | "warning" | "danger" = "primary";
 
   render() {
     return html`

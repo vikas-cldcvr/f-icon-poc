@@ -1,12 +1,12 @@
 {
   "name": "f-icon-poc",
-  "version": "1.0.8",
+  "version": "1.0.15",
   "description": "icon poc",
   "module": "dist/flow-core.es.js",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/types/src/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "prepublishOnly": "yarn analyze && yarn build",
+    "prepublishOnly": "./compile.sh",
     "build": "vite build --emptyOutDir && tsc -emitDeclarationOnly",
     "build:watch": "tsc --watch",
     "analyze": "cem analyze --litelement --globs \"src/**/*.ts\"",
