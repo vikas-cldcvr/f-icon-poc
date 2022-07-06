@@ -16,12 +16,12 @@ export function transformSchema(schema: Package) {
 			}
 		});
 	});
-
+	const allImports = getComponentPropTypeImports(schema);
 	const output = prettier.format(
 		`
         /* eslint-disable */
         import { VueConstructor } from "vue";
-
+		${allImports.join("\n")}
         declare module "vue" {
             export interface GlobalComponents {
                 ${components.join("\n")}
@@ -62,4 +62,44 @@ function getComponentCodeFromDeclaration(declaration: Declaration) {
     >;`;
 
 	return componentDeclaration;
+}
+
+//import { FComplexTypeProp, FComplexPriorityProp, FComplexAssignee, FComplexLanguageProp } from 'src/f-complex/f-complex';
+
+function getComponentPropTypeImports(schema: Package): string[] {
+	const builtInTypes = ["null", "undefined", "boolean", "|", "string", "number", "any", "{}", "unknown", "void"];
+	const moduleTypeImports: string[] = [];
+	schema.modules.forEach((module) => {
+		const modulePath = module.path.slice(0, -3);
+		module.declarations?.forEach((declaration) => {
+			if (!("customElement" in declaration) || !declaration.customElement) {
+				return null;
+			}
+
+			if (declaration.attributes) {
+				const extractedTypes: string[] = [];
+				declaration.attributes.forEach((attribute) => {
+					if (attribute.type?.text) {
+						const typesToImport: string[] = attribute.type.text.split(" ");
+						typesToImport.forEach((t) => {
+							if (!builtInTypes.includes(t) && t.charAt(0) !== "'" && t.charAt(0) !== '"') {
+								extractedTypes.push(t);
+							}
+						});
+					}
+				});
+
+				if (extractedTypes.length > 0) {
+					let importStatement = `import { `;
+					extractedTypes.forEach((et, idx) => {
+						importStatement += `${et}${idx < extractedTypes.length - 1 ? "," : ""}`;
+					});
+					importStatement += `} from '${modulePath}';`;
+					moduleTypeImports.push(importStatement);
+				}
+			}
+		});
+	});
+
+	return moduleTypeImports;
 }
