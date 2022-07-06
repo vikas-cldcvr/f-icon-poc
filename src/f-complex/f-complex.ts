@@ -5,8 +5,8 @@ import eleStyle from "./f-complex.scss";
 export type FComplexTypeProp = "high" | "low" | "medium";
 export type FComplexPriorityProp = "high" | "low" | "medium";
 export type FComplexAssignee = {
-  firstname: string;
-  lastname: string;
+  firstname?: string;
+  lastname?: string;
   username: string;
 };
 
@@ -32,10 +32,10 @@ export class FComplex extends LitElement {
   @property({ reflect: true, type: Boolean })
   active?: boolean = false;
 
-  internalMember = "this will test d.ts";
+  readonly required = ["type"];
 
   render() {
-    return html``;
+    return html`${this.assignee?.username}`;
   }
 }
 

@@ -1,4 +1,4 @@
-import { Declaration, Package } from "custom-elements-manifest/schema";
+import { Declaration, Package, PropertyLike } from "custom-elements-manifest/schema";
 import { vaidateOptions } from "./options";
 import prettier from "prettier";
 
@@ -46,12 +46,18 @@ function getComponentCodeFromDeclaration(declaration: Declaration) {
             {
 				$props: {
     `;
-
+	let requiredAttributes: string[] = [];
+	if (declaration.members) {
+		const requiredDeclaration = declaration.members.find((d) => d.name === "required") as PropertyLike;
+		if (requiredDeclaration && requiredDeclaration.default) {
+			requiredAttributes = JSON.parse(requiredDeclaration.default);
+		}
+	}
 	if (declaration.attributes) {
 		declaration.attributes.forEach((attribute) => {
 			componentDeclaration = `
                 ${componentDeclaration}
-                ${attribute.name}: ${attribute.type?.text};
+                ${attribute.name}${requiredAttributes.includes(attribute.name) ? "" : "?"}: ${attribute.type?.text};
             `;
 		});
 	}
@@ -94,7 +100,7 @@ function getComponentPropTypeImports(schema: Package): string[] {
 					extractedTypes.forEach((et, idx) => {
 						importStatement += `${et}${idx < extractedTypes.length - 1 ? "," : ""}`;
 					});
-					importStatement += `} from '${modulePath}';`;
+					importStatement += `} from './${modulePath}';`;
 					moduleTypeImports.push(importStatement);
 				}
 			}

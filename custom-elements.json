@@ -35,6 +35,62 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/f-icon/f-icon.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "FIcon",
+          "members": [
+            {
+              "kind": "field",
+              "name": "state",
+              "type": {
+                "text": "\"primary\" | \"success\" | \"warning\" | \"danger\""
+              },
+              "default": "\"primary\"",
+              "attribute": "state"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "state",
+              "type": {
+                "text": "\"primary\" | \"success\" | \"warning\" | \"danger\""
+              },
+              "default": "\"primary\"",
+              "fieldName": "state"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "f-icon",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FIcon",
+          "declaration": {
+            "name": "FIcon",
+            "module": "src/f-icon/f-icon.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "f-icon",
+          "declaration": {
+            "name": "FIcon",
+            "module": "src/f-icon/f-icon.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/f-complex/f-complex.ts",
       "declarations": [
         {
@@ -88,6 +144,14 @@
               "default": "false",
               "attribute": "active",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "array"
+              },
+              "default": "[\"type\"]"
             }
           ],
           "attributes": [
@@ -152,62 +216,6 @@
           "declaration": {
             "name": "FComplex",
             "module": "src/f-complex/f-complex.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/f-icon/f-icon.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "FIcon",
-          "members": [
-            {
-              "kind": "field",
-              "name": "state",
-              "type": {
-                "text": "\"primary\" | \"success\" | \"warning\" | \"danger\""
-              },
-              "default": "\"primary\"",
-              "attribute": "state"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "state",
-              "type": {
-                "text": "\"primary\" | \"success\" | \"warning\" | \"danger\""
-              },
-              "default": "\"primary\"",
-              "fieldName": "state"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "f-icon",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "FIcon",
-          "declaration": {
-            "name": "FIcon",
-            "module": "src/f-icon/f-icon.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "f-icon",
-          "declaration": {
-            "name": "FIcon",
-            "module": "src/f-icon/f-icon.ts"
           }
         }
       ]

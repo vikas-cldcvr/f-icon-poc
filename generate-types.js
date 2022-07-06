@@ -1,3 +1,4 @@
+/* eslint-disable*/
 const fs = require("fs");
 const customElementsJSON = require("./custom-elements.json");
 const vueTypesFileName = `${__dirname}/custom-elements.vue.ts`;

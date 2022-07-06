@@ -1,6 +1,6 @@
 {
   "name": "f-icon-poc",
-  "version": "1.0.18",
+  "version": "1.0.20",
   "description": "icon poc",
   "module": "dist/flow-core.es.js",
   "types": "dist/types/src/index.d.ts",
