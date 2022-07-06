@@ -4,12 +4,6 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "src/custom-elements.vue.d.ts",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/index.ts",
       "declarations": [],
       "exports": [
@@ -19,14 +13,6 @@
           "declaration": {
             "name": "*",
             "package": "\"./f-icon/f-icon\""
-          }
-        },
-        {
-          "kind": "js",
-          "name": "*",
-          "declaration": {
-            "name": "*",
-            "package": "\"./custom-elements.vue.d.js\""
           }
         }
       ]
